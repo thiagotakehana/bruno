@@ -61,17 +61,20 @@ const GraphQLRequestPane = ({ item, collection, leftPaneWidth, onSchemaLoad, tog
     switch (tab) {
       case 'query': {
         return (
-          <QueryEditor
-            collection={collection}
-            theme={displayedTheme}
-            schema={schema}
-            width={leftPaneWidth}
-            onSave={onSave}
-            value={query}
-            onRun={onRun}
-            onEdit={onQueryChange}
-            onClickReference={handleGqlClickReference}
-          />
+          <div className="flex-direction: column; w-full">
+            <QueryEditor
+              collection={collection}
+              theme={displayedTheme}
+              schema={schema}
+              width={leftPaneWidth}
+              onSave={onSave}
+              value={query}
+              onRun={onRun}
+              onEdit={onQueryChange}
+              onClickReference={handleGqlClickReference}
+            />
+            <GraphQLVariables item={item} variables={variables} collection={collection} />
+          </div>
         );
       }
       case 'variables': {
